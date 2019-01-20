@@ -1,0 +1,36 @@
+.dialog {
+  padding: .7rem 1rem 2rem;
+  /*min-width: 50rem;*/
+  max-height: 90vh;
+}
+
+.dialog__title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.dialog__actions {
+  margin-top: 1.5rem;;
+}
+
+/*TIMEPICKER */
+
+/deep/ .timepicker__dialog {
+  justify-content: center !important;
+}
+
+/deep/ .timepicker__actions {
+  justify-content: center !important;
+  flex-direction: column-reverse;
+  align-items: stretch !important;
+}
+
+/deep/ .timepicker__actions button {
+  display: block !important;
+  width: 100% !important;
+}
+
+/deep/ .timepicker__actions button:first-child {
+  margin-bottom: 10px !important;
+}
+

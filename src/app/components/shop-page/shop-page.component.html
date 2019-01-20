@@ -1,0 +1,70 @@
+<section class="description mat-big-card">
+  <a
+    mat-icon-button
+    matTooltip="Вернуться назад"
+    class="go_back"
+    [routerLink]="['/']"
+  >
+    <mat-icon>arrow_back_ios</mat-icon>
+  </a>
+
+  <div class="controls">
+    <button
+      mat-mini-fab
+      matTooltip="Удалить магазин"
+      (click)="removeShop()"
+      [routerLink]="['/']"
+      color="warn"
+      style="margin-left: 1rem;"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <h1 class="title">{{ shop.name }}</h1>
+
+  <table class="table description__table">
+    <tr>
+      <td>Адрес:</td>
+      <td>
+        {{ shop.address }}
+      </td>
+    </tr>
+    <tr>
+      <td>Режим работы:</td>
+      <td>
+        <span class="description__time"
+        >{{ shop.start }} -
+            {{ shop.end }}</span
+        >
+      </td>
+    </tr>
+  </table>
+</section>
+
+<section class="products mat-big-card">
+  <!--<div class="controls">-->
+    <!--<button-->
+      <!--mat-mini-fab-->
+      <!--matTooltip="Добавить товар"-->
+      <!--(click)="onAddProduct(shop.id)"-->
+      <!--color="primary"-->
+      <!--style="margin-left: 1rem;"-->
+    <!--&gt;-->
+      <!--<mat-icon>create</mat-icon>-->
+    <!--</button>-->
+  <!--</div>-->
+
+  <div *ngIf="productsLength == 0;else empty">
+    В этом магазине пока нет товаров!
+  </div>
+  <ng-template #empty>
+    <app-prodcts-list [shop]="shopsService.getById(shop.id)"></app-prodcts-list>
+  </ng-template>
+</section>
+
+
+
+
+
+
+

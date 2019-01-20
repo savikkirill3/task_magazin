@@ -1,0 +1,128 @@
+<div class="dialog">
+  <h2 class="dialog__title" mat-dialog-title>Добавить магазин</h2>
+
+  <div class="dialog__content">
+    <form [formGroup]="form" fxLayout="column">
+      <mat-form-field fxFlex="100%">
+        <input
+          type="text"
+          matInput
+          placeholder="Наименование"
+          formControlName="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100%">
+        <input
+          type="text"
+          matInput
+          placeholder="Адрес"
+          formControlName="address"
+          required
+        />
+      </mat-form-field>
+      <!------------------------------- start time ---------------------------------->
+      <mat-form-field fxFlex="100%">
+        <input
+          matInput
+          formControlName="starttime"
+          placeholder="Начало робочего дня"
+          [ngxTimepicker]="timePicker"
+          [format]="24"
+          readonly
+          [disableClick]="true"
+          required
+        />
+        <ngx-material-timepicker-toggle [for]="timePicker" matSuffix>
+          <mat-icon
+            ngxMaterialTimepickerToggleIcon
+            style="color: #757575; font-size: 2.1rem;"
+          >access_time</mat-icon
+          >
+        </ngx-material-timepicker-toggle>
+      </mat-form-field>
+
+      <div class="timepicker__dialog">
+        <ngx-material-timepicker
+          #timePicker
+          [confirmBtnTmpl]="confirmBtn"
+          [cancelBtnTmpl]="cancelBtn"
+        ></ngx-material-timepicker>
+
+        <ng-template #confirmBtn>
+          <button mat-raised-button color="primary" type="button">Хорошо</button>
+        </ng-template>
+        <ng-template #cancelBtn>
+          <button mat-raised-button color="warn" type="button">Отменить</button>
+        </ng-template>
+      </div>
+      <!------------------------------- end time ---------------------------------->
+      <mat-form-field fxFlex="100%">
+        <input
+          matInput
+          formControlName="endtime"
+          placeholder="Конец робочего дня"
+          [ngxTimepicker]="timePicker2"
+          [format]="24"
+          readonly
+          [disableClick]="true"
+          required
+        />
+        <ngx-material-timepicker-toggle [for]="timePicker2" matSuffix>
+          <mat-icon
+            ngxMaterialTimepickerToggleIcon
+            style="color: #757575; font-size: 2.1rem;"
+          >access_time</mat-icon
+          >
+        </ngx-material-timepicker-toggle>
+      </mat-form-field>
+
+      <div class="timepicker__dialog">
+        <ngx-material-timepicker
+          #timePicker2
+          [enableKeyboardInput]="true"
+          [confirmBtnTmpl]="confirmBtn2"
+          [cancelBtnTmpl]="cancelBtn"
+        ></ngx-material-timepicker>
+
+        <ng-template #confirmBtn2>
+          <button mat-raised-button color="primary" type="button">Хорошо</button>
+        </ng-template>
+        <ng-template #cancelBtn>
+          <button mat-raised-button color="warn" type="button">Отменить</button>
+        </ng-template>
+      </div>
+
+
+      <div
+        mat-dialog-actions
+        fxLayout="row nowrap"
+        fxLayoutGap="10px"
+        class="actions"
+      >
+        <button
+          mat-raised-button
+          color="warn"
+          [mat-dialog-close]="false"
+          fxFlex="50"
+          type="button"
+        >
+          Отменить
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [mat-dialog-close]="form.value"
+          fxFlex="50"
+          [disabled]="form.invalid"
+          type="submit"
+          (click)="addShop(form.value)"
+          [routerLink]="['/shop', nextId]"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div>
+    <div class="page-title">
+      <app-header></app-header>
+      <app-button></app-button>
+    </div>
+    <div *ngIf="shopsService.getShops().length == 0;else empty">
+      <mat-card>
+        Пока нет ни одного магазина!
+      </mat-card>
+    </div>
+    <ng-template #empty>
+      <div class="shop-list" *ngFor="let shop of shops">
+        <app-shops [shop]="shop"></app-shops>
+      </div>
+    </ng-template>
+  </div>
+  <app-map></app-map>
+</div>
+

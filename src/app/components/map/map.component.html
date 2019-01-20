@@ -1,0 +1,9 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <ng-container *ngFor="let location of locations">
+    <agm-marker [latitude]="location.position.lat" [longitude]="location.position.lng">
+      <agm-info-window>
+        {{location.name}}
+      </agm-info-window>
+    </agm-marker>
+  </ng-container>
+</agm-map>
